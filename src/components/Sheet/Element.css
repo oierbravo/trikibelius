@@ -1,0 +1,6 @@
+.sheet-element {
+    display:inline-block
+}
+.sheet-element.selected {
+    border: 3px solid #00e;
+}

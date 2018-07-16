@@ -1,0 +1,24 @@
+.note {
+    display: inline-block;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    background-color: #fff;
+    color: #000;
+    border: 2px solid #000;
+    vertical-align: middle;
+    margin: 0px;
+    line-height: 70px;
+    text-align: center;
+    font-size: 16pt;
+}
+
+.note-open {
+    background-color: #fff;
+    color: #000;
+}
+
+.note-close {
+    background-color: #000;
+    color: #fff;
+}
