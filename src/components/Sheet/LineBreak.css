@@ -1,5 +1,8 @@
 .sheet-element-linebreak {
   display: inline-block;
+	width: 100% !important;
+}
+.sheet-element-linebreak div{
 	width: 100%;
-	height: 20px;
+	height: 100%;
 }

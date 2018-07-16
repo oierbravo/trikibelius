@@ -21,7 +21,10 @@ ElementList.propTypes = {
   elements: PropTypes.arrayOf(
     PropTypes.shape({
       type: PropTypes.string.isRequired,
-      data: PropTypes.object
+      data: PropTypes.shape({
+          number: PropTypes.number.isRequired,
+          direction: PropTypes.string.isRequired
+      }),
     }).isRequired
   ).isRequired,
   clickElement: PropTypes.func.isRequired

@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import Button from './Button'
 import KeyboardEventHandler from 'react-keyboard-event-handler';
 import './DirectionButtons.css'
-import {setDirection,Directions} from '../../actions'
+import {Directions} from '../../actions'
 const DirectionButtons = ({state, clickButton,toggleDirection,setDirection}) => (
-<div className='u-flex'>
+<div className='toolbar-group direction-buttons'>
   <Button label="Itxi" name="close" active={(state.direction === 'CLOSE')} clickButton={() => clickButton('CLOSE')}/>
   <Button label="Ireki" name="open" active={(state.direction === 'OPEN')} clickButton={() => clickButton('OPEN')}/>
   <KeyboardEventHandler

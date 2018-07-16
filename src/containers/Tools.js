@@ -7,8 +7,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  addLineBreak: () => dispatch(addElement({type:ElementTypes.LINEBREAK})),
-  addSilence: () => dispatch(addElement({type:ElementTypes.SILENCE})),
+  addLineBreak: () => dispatch(addElement({type:ElementTypes.LINEBREAK,selected:true})),
+  addSilence: () => dispatch(addElement({type:ElementTypes.SILENCE,selected:true})),
   deleteElement: () => dispatch(deleteElement()),
   toggleAlternative: (alternative) => dispatch(toggleAlternative(alternative))
 })

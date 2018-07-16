@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import Direction from '../../containers/Direction';
 import Tools from '../../containers/Tools';
 import Mode from '../../containers/Mode';
-import KeyboardEventHandler from 'react-keyboard-event-handler';
 import './ToolBar.css'
 
 

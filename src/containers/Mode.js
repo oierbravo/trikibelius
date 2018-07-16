@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import {  setEditMode } from '../actions';
-import SelectMode from '../components/UI/SelectMode';
+import ModeButtons from '../components/UI/ModeButtons';
 
 const mapStateToProps = state => ({
  mode: state.mode
@@ -12,4 +12,4 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(SelectMode)
+)(ModeButtons)

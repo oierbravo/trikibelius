@@ -2,14 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import TrikiPadButton from './TrikiPadButton'
 
-import {BbEb} from '../../maps/Numbers'
+import TrikiNumbers from '../../maps/Triki'
 import {TrikiKeyboard} from '../../maps/Keyboard'
 import KeyboardEventHandler from 'react-keyboard-event-handler';
 import './TrikiPad.css';
-const DefaultTune = 'BbEb';
-const DIRECTION = "open"
-
-const buttons = BbEb.map.reverse();
+const buttons = TrikiNumbers.getMap().reverse();
 
 const TrikiPad = ({currentDirection,  clickButton }) => (
   <div className="ui-triki-pad u-block">
@@ -39,7 +36,7 @@ const TrikiPad = ({currentDirection,  clickButton }) => (
     {
       <KeyboardEventHandler
       handleKeys={['all']}
-      onKeyEvent={(key, e) =>  clickButton(TrikiKeyboard.getNumber(e.keyCode),currentDirection)} />
+      onKeyEvent={(key, e) => TrikiKeyboard.getNumber(e.keyCode) ?  clickButton(TrikiKeyboard.getNumber(e.keyCode),currentDirection) : false} />
     }
   </div>
 )

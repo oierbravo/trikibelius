@@ -4,10 +4,10 @@ import Direction from '../../containers/Direction';
 import Tools from '../../containers/Tools';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
 import './ToolBar.css'
-import {setEditMode,EditModes} from  '../../actions'
+import {EditModes} from  '../../actions'
 
-const SelectMode = ({setEditMode,changeMode,mode }) => (
-    <div className="selectEditMode">
+const ModeButtons = ({setEditMode,changeMode,mode }) => (
+    <div className="toolbar-group mode-buttons">
         <ul>
             <li className={(mode === EditModes.SELECT ) ? 'selected' : ''} onClick={()=>changeMode(EditModes.SELECT)}>SELECT</li> 
             <li className={(mode === EditModes.ALTERNATIVE ) ? 'selected' : ''} onClick={()=>changeMode(EditModes.ALTERNATIVE)}>ALTERNATIVE</li>
@@ -29,8 +29,8 @@ const SelectMode = ({setEditMode,changeMode,mode }) => (
      } />
     </div>
 )
-SelectMode.propTypes = {
+ModeButtons.propTypes = {
     mode: PropTypes.string,
     changeMode: PropTypes.func.isRequired
 }
-export default SelectMode
+export default ModeButtons

@@ -22,6 +22,8 @@ class OutputString extends React.Component {
           return "#";
         case ElementTypes.SILENCE:
           return "_";
+        default:
+          return ';'
       }
     });
     return outputArray.join(',');
