@@ -1,0 +1,6 @@
+.toolbar {
+  display:flex;
+}
+.toolbar-group {
+    margin-right: 20px;
+}

@@ -1,18 +1,23 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Direction from '../../containers/Direction';
-import Tools from '../../containers/Tools';
+import ElementActions from '../../containers/ElementActions';
 import Mode from '../../containers/Mode';
-import KeyboardEventHandler from 'react-keyboard-event-handler';
 import './ToolBar.css'
-
+import { withStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import IconButton from '@material-ui/core/IconButton';
 
 const ToolBar = ({state }) => (
-    <div className="toolbar">
-        <Direction/>
-        <Tools/>
-        <Mode/>
-    </div>
+    <AppBar  color="default">
+        <Toolbar variant="dense" >
+            <Direction/>
+            <ElementActions/>
+            <Mode/>
+        </Toolbar>
+    </AppBar>
 )
 ToolBar.propTypes = {
   state: PropTypes.object,

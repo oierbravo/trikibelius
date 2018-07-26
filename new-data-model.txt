@@ -1,0 +1,30 @@
+sheet:
+    title: String
+    parts: [
+        {
+            type: Group | Triplet
+            repetition: String
+
+            elements: [
+
+            ]
+        }
+    ]
+
+
+
+space: {
+    type: space
+    data: {
+        quantity: Int
+    }
+}
+note: {
+    type: note
+    data: {
+        number: Int
+        direction: String
+        bass: String
+        finger: String
+    }
+}

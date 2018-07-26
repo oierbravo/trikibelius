@@ -1,5 +1,8 @@
 .sheet-element-silence {
+	width: 20px !important;
+}
+.sheet-element-silence div{
   display: inline-block;
-	width: 40px;
-	height: 20px;
+	height: 100%;
+	
 }

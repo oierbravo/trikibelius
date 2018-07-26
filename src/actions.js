@@ -29,7 +29,9 @@ export const EditModes = {
   NONE: 'NONE',
   SELECT: 'SELECT',
   ALTERNATIVE: 'ALTERNATIVE',
-  DELETE: 'DELETE'
+  DELETE: 'DELETE',
+  PLAY: 'PLAY',
+  DIRECTION: 'DIRECTION'
 }
 /*
  * action creators
@@ -40,8 +42,8 @@ export function addElement(element) {
 export function selectElement(index) {
   return { type: SELECT_ELEMENT, index }
 }
-export function deleteElement(index) {
-  return { type: DELETE_ELEMENT, index }
+export function deleteElement() {
+  return { type: DELETE_ELEMENT }
 }
 export function toggleAlternative(alternative){
   return { type: TOGGLE_ALTERNATIVE,alternative }

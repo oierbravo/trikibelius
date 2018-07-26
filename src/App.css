@@ -1,7 +1,10 @@
-.App {
-  text-align: center;
+#root {
+  padding-top:85px;
+  margin: 0 auto;
 }
-
+.content {
+  padding-top:200px;
+}
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;

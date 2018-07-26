@@ -39,7 +39,10 @@ class Element extends React.Component {
 Element.propTypes = {
   clickElement: PropTypes.func,
   type: PropTypes.string.isRequired,
-  data: PropTypes.object,
+  data: PropTypes.shape({
+      number: PropTypes.number.isRequired,
+      direction: PropTypes.string.isRequired
+  }),
   selected:PropTypes.bool,
   index:PropTypes.number.isRequired
 }

@@ -1,6 +1,11 @@
 .sheet-element {
-    display:inline-block
+    display:inline-block;
+    height: 70px;
+    box-sizing: border-box;
+}
+.sheet-element:hover {
+    border-bottom: 4px solid  rgba(0, 0, 255, 0.3);
 }
 .sheet-element.selected {
-    border: 3px solid #00e;
+    border-bottom: 4px solid  rgba(0, 0, 255, 0.7);
 }

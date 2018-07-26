@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import './Silence.css'
 
 
-const Silence = ({ onClick, number,direction }) => (
-  <div onClick={onClick}/>
+const Silence = ({ onClick}) => (
+    <div  onClick={onClick}>&zwnj;</div>
 )
 
 Silence.propTypes = {

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import {ElementTypes} from "../../actions"
+import {ElementTypes,Directions} from "../../actions"
 //const OutputString =  ({elements}) => (
 //  <textarea disabled value={ ({elements})}/>
 //)
@@ -17,11 +17,13 @@ class OutputString extends React.Component {
     var outputArray = this.props.elements.map(function(element,index){
       switch(element.type){
         case ElementTypes.NOTE:
-          return ((element.data.direction === 'OPEN') ? '+' : '') + element.data.number;
+          return ((element.data.direction === Directions.OPEN) ? '+' : '') + element.data.number;
         case ElementTypes.LINEBREAK:
           return "#";
         case ElementTypes.SILENCE:
           return "_";
+        default:
+          return ';'
       }
     });
     return outputArray.join(',');

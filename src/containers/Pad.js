@@ -8,7 +8,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = (dispatch) => ({
     clickButton: function(number,direction) {
-      dispatch(addElement({type:ElementTypes.NOTE,data:{number:number,direction:direction}}))
+      dispatch(addElement({type:ElementTypes.NOTE,selected:true,data:{number:number,direction:direction}}))
     }
 })
 export default connect(

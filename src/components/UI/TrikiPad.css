@@ -1,10 +1,36 @@
 .ui-triki-pad {
     display: block;
+    position:fixed;
+    left:0;
+    right:0;
+    bottom:-5px;
+    margin-bottom: 0;
+    transition: margin 0.5s ease-in-out;
 }
-
+.ui-triki-pad--hidden {
+    margin-bottom: -193px;
+}
+.ui-triki-pad--visible {
+    margin-bottom: 0px;
+}
+.ui-triki-pad-content {
+    width: 1000px;
+    margin: 0 auto;
+    background-color: aqua;
+    border-radius: 25px 25px 0 0;
+    padding: 20px;
+}
 .ui-triki-pad-flex {
     display: flex;
     justify-content: center;
 
+}
+.ui-triki-pad-handler {
+    position: absolute;
+    right: 50%;
+    top: -30px;
+    background-color: aqua;
+    padding:5px 5px 0 5px;
+    border-radius: 25px 25px 0 0;
 }
 

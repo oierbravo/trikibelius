@@ -95,12 +95,13 @@ export const TrikiKeyboard =
     }
   ], getNumber : function(keycode) {
     var key = this.map.find(el=>el.KeyCode === keycode);
-    if(key){
+    
+    if(typeof key === 'object'){
+      console.log(typeof key);
       return key.Number;
     } else {
       return false;
     }
-    
     
   }
 }

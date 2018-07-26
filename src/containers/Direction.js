@@ -3,7 +3,7 @@ import DirectionButtons from '../components/UI/DirectionButtons'
 import { setDirection,toggleDirection } from '../actions';
 
 const mapStateToProps = state => ({
- state
+  direction: state.direction
 })
 
 const mapDispatchToProps = (dispatch) => ({

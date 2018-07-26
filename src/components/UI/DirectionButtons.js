@@ -1,13 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Button from './Button'
+//import Button from './Button'
 import KeyboardEventHandler from 'react-keyboard-event-handler';
 import './DirectionButtons.css'
-import {setDirection,Directions} from '../../actions'
-const DirectionButtons = ({state, clickButton,toggleDirection,setDirection}) => (
-<div className='u-flex'>
-  <Button label="Itxi" name="close" active={(state.direction === 'CLOSE')} clickButton={() => clickButton('CLOSE')}/>
-  <Button label="Ireki" name="open" active={(state.direction === 'OPEN')} clickButton={() => clickButton('OPEN')}/>
+import {Directions} from '../../actions'
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import styles from './ButtonStyle'
+
+
+const DirectionButtons = ({classes,direction, clickButton,toggleDirection,setDirection}) => (
+<div className='toolbar-group direction-buttons'>
+{console.log(direction)}
+  <Button className={classes.button}  variant="contained" color={(direction === Directions.CLOSE) ? 'primary':'default'} onClick={() => clickButton(Directions.CLOSE)}>Itxi</Button>
+  <Button className={classes.button}  variant="contained" color={(direction === Directions.OPEN) ? 'secondary':'default'} onClick={() => clickButton(Directions.OPEN)}>Ireki</Button>
   <KeyboardEventHandler
     handleKeys={['all']}
     handleEventType="keydown"
@@ -31,9 +37,10 @@ const DirectionButtons = ({state, clickButton,toggleDirection,setDirection}) => 
 </div>
 )
 DirectionButtons.propTypes = {
-  state: PropTypes.object,
+  classes: PropTypes.object.isRequired,
+  direction: PropTypes.string.isRequired,
   clickButton: PropTypes.func.isRequired,
   toggleDirection:PropTypes.func.isRequired,
   setDirection:PropTypes.func.isRequired
 }
-export default DirectionButtons
+export default  withStyles(styles)(DirectionButtons)
