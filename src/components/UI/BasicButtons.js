@@ -37,7 +37,7 @@ const BasicButtons = ({classes,state, addLineBreak,deleteElement,addSilence,togg
       onKeyEvent={(key, e) =>  deleteElement()} />
 
     <Tooltip title="Change alternative">
-    <Button className={classes.button}  variant="contained" onClick={() => toggleAlternative(TrikiNumbers.getAlternative(state.elements.find(((element) => (element.selected) ? element : null))))}>
+    <Button className={classes.button}  variant="contained" onClick={() => toggleAlternative(TrikiNumbers.getAlternative(state.elements.present.find(((element) => (element.selected) ? element : null))))}>
       <SyncIcon/>
       </Button>
       </Tooltip>

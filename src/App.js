@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Sheet from './containers/Sheet';
+import Sheet from './components/Sheet';
 import Pad from './containers/Pad';
 import ToolBar from './components/UI/ToolBar';
 import Output from './containers/Output';

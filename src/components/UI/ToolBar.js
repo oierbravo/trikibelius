@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Direction from '../../containers/Direction';
 import ElementActions from '../../containers/ElementActions';
 import Mode from '../../containers/Mode';
+import UndoRedo from '../../containers/UndoRedo';
 import './ToolBar.css'
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -16,6 +17,7 @@ const ToolBar = ({state }) => (
             <Direction/>
             <ElementActions/>
             <Mode/>
+            <UndoRedo/>
         </Toolbar>
     </AppBar>
 )
