@@ -2,19 +2,34 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import KeyboardEventHandler from 'react-keyboard-event-handler';
 import {EditModes} from  '../../actions'
+//import styles from './ButtonStyle'
+import { withStyles } from '@material-ui/core/styles';
 import ToggleButton, { ToggleButtonGroup } from '@material-ui/lab/ToggleButton';
 import FormatItalicIcon from '@material-ui/icons/FormatItalic';
 
 import { CursorDefaultOutlineIcon, SyncIcon,SwapHorizontalIcon, EraserVariantIcon,MusicNoteIcon} from 'mdi-react';
 import Tooltip from '@material-ui/core/Tooltip';
 
-const ModeButtons = ({setEditMode,changeMode,mode }) => (
-    <div className="toolbar-group mode-buttons">
-            <ToggleButtonGroup value={mode} exclusive onChange={(mode)=>changeMode(mode)}>
-                <ToggleButton value={EditModes.SELECT}>
+const styles = theme => ({
+  toggleContainer: {
+    padding: `${theme.spacing.unit}px ${theme.spacing.unit * 2}px`,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    margin: `${theme.spacing.unit}px 0`
+  },
+  toggleButton: {
+   height: '40px'
+  },
+});
+
+const ModeButtons = ({classes,setEditMode,changeMode,mode }) => (
+    <div className={classes.toggleContainer}>
+            <ToggleButtonGroup  value={mode} exclusive onChange={(mode)=>changeMode(mode)}>
+                <ToggleButton className={classes.toggleButton} value={EditModes.SELECT}>
                   <CursorDefaultOutlineIcon />
                 </ToggleButton>
-                <ToggleButton disabled value={EditModes.DIRECTION}>
+                <ToggleButton className={classes.toggleButton} disabled value={EditModes.DIRECTION}>
                   <SwapHorizontalIcon />
                 </ToggleButton>
                 <ToggleButton disabled value={EditModes.ALTERNATIVE}>
@@ -45,7 +60,9 @@ const ModeButtons = ({setEditMode,changeMode,mode }) => (
     </div>
 )
 ModeButtons.propTypes = {
+    classes: PropTypes.object.isRequired,
     mode: PropTypes.string,
     changeMode: PropTypes.func.isRequired
 }
-export default ModeButtons
+
+export default  withStyles(styles)(ModeButtons)
