@@ -27,8 +27,7 @@ class NumberMaps {
       }
       return {
         number:alternative.Number,
-        direction: (alternative.Open === currentNote ) ? Directions.OPEN : Directions.CLOSE,
-        selected: true
+        direction: (alternative.Open === currentNote ) ? Directions.OPEN : Directions.CLOSE
       }
     }
     getNote(number,direction){

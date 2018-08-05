@@ -6,7 +6,7 @@ import { withTheme } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 
-const ElementList = ({ classes,elements, clickElement }) => (
+const ElementList = ({ classes,elements, clickElement,currentMode }) => (
   <Paper className={["sheet-container",classes].join(' ')}>
   <div className="sheet">
       {elements.map((element,index)=>
@@ -17,7 +17,7 @@ const ElementList = ({ classes,elements, clickElement }) => (
           selected={element.selected}
           key={index}
           {...element}
-          clickElement={() => clickElement(index)}
+          clickElement={() => clickElement(index,currentMode)}
         />
       )}
       </div>
@@ -34,6 +34,7 @@ ElementList.propTypes = {
       }),
     }).isRequired
   ).isRequired,
-  clickElement: PropTypes.func.isRequired
+  clickElement: PropTypes.func.isRequired,
+  currentMode: PropTypes.string.isRequired
 }
 export default withTheme()(ElementList)

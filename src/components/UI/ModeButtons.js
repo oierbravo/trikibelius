@@ -5,9 +5,9 @@ import {EditModes} from  '../../actions'
 //import styles from './ButtonStyle'
 import { withStyles } from '@material-ui/core/styles';
 import ToggleButton, { ToggleButtonGroup } from '@material-ui/lab/ToggleButton';
-import FormatItalicIcon from '@material-ui/icons/FormatItalic';
+import KeyboardTab from '@material-ui/icons/KeyboardTab';
 
-import { CursorDefaultOutlineIcon, SyncIcon,SwapHorizontalIcon, EraserVariantIcon,MusicNoteIcon} from 'mdi-react';
+import { ArrowSplitVerticalIcon,ArrowCollapseLeftIcon,CursorDefaultOutlineIcon, SyncIcon,SwapHorizontalIcon, EraserVariantIcon,MusicNoteIcon} from 'mdi-react';
 import Tooltip from '@material-ui/core/Tooltip';
 
 const styles = theme => ({
@@ -29,16 +29,19 @@ const ModeButtons = ({classes,setEditMode,changeMode,mode }) => (
                 <ToggleButton className={classes.toggleButton} value={EditModes.SELECT}>
                   <CursorDefaultOutlineIcon />
                 </ToggleButton>
-                <ToggleButton className={classes.toggleButton} disabled value={EditModes.DIRECTION}>
+                <ToggleButton className={classes.toggleButton} value={EditModes.DIRECTION}>
                   <SwapHorizontalIcon />
                 </ToggleButton>
-                <ToggleButton disabled value={EditModes.ALTERNATIVE}>
+                <ToggleButton className={classes.toggleButton}  value={EditModes.ALTERNATIVE}>
                   <SyncIcon />
                 </ToggleButton>
-              <ToggleButton disabled value={EditModes.DELETE}>
+              <ToggleButton className={classes.toggleButton}  value={EditModes.DELETE}>
                    <EraserVariantIcon />
                 </ToggleButton>
-                <ToggleButton disabled value={EditModes.PLAY}>
+                <ToggleButton className={classes.toggleButton}  value={EditModes.GROUP_LEFT}>
+                   <ArrowSplitVerticalIcon />
+                </ToggleButton>
+                <ToggleButton className={classes.toggleButton} disabled value={EditModes.PLAY}>
                   <MusicNoteIcon />
                 </ToggleButton>
             </ToggleButtonGroup>

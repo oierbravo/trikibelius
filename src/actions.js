@@ -1,6 +1,7 @@
 /*
  * action types
  */
+export const CLICK_ELEMENT = 'CLICK_ELEMENT'
 export const ADD_ELEMENT = 'ADD_ELEMENT'
 export const SELECT_ELEMENT = 'SELECT_ELEMENT'
 export const DELETE_ELEMENT = 'DELETE_ELEMENT'
@@ -12,11 +13,15 @@ export const SET_DIRECTION_OPEN = 'SET_DIRECTION_OPEN'
 export const SET_DIRECTION_CLOSE = 'SET_DIRECTION_CLOSE'
 
 export const SET_EDIT_MODE = 'SET_EDIT_MODE'
+export const GROUP_LEFT = 'GROUP_LEFT'
+export const GROUP_NONE = 'GROUP_NONE'
+
 /*
  * other constants
  */
 export const ElementTypes = {
   NOTE: 'NOTE',
+  NOTE_GROUP: 'NOTE_GROUP',
   SILENCE: 'SILENCE',
   LINEBREAK: 'LINEBREAK'
 }
@@ -31,11 +36,15 @@ export const EditModes = {
   ALTERNATIVE: 'ALTERNATIVE',
   DELETE: 'DELETE',
   PLAY: 'PLAY',
-  DIRECTION: 'DIRECTION'
+  DIRECTION: 'DIRECTION',
+  GROUP_LEFT: 'GROUP_LEFT'
 }
 /*
  * action creators
  */
+export function clickElement(index,currentMode) {
+  return { type: CLICK_ELEMENT,index,currentMode}
+}
 export function addElement(element) {
   return { type: ADD_ELEMENT, element }
 }

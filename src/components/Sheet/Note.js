@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 
 import "./Note.css"
+import { GROUP_NONE } from '../../actions';
 
 const styles = theme => ({
   button: {
@@ -16,6 +17,7 @@ const styles = theme => ({
 class Note extends React.Component {
   constructor (props) {
     super(props)
+    console.log(props)
     this.state = props;
     this.click = this.click.bind(this);
   }
@@ -25,8 +27,9 @@ class Note extends React.Component {
     this.props.onClick();
   }
   render () {
+    const group = (this.props.data.group) ? this.props.data.group : GROUP_NONE;
     return (
-      <div className={['note','note-' + this.props.data.direction.toLowerCase(),(this.state.active) ? 'active' : ''].join(' ')} onClick={this.click} >
+      <div className={['note','note-' + this.props.data.direction.toLowerCase(),(this.state.active) ? 'active' : '','note--' +group.toLowerCase()].join(' ')} onClick={this.click} >
   {this.props.data.number}
     
  </div>

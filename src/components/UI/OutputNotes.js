@@ -11,7 +11,7 @@ class OutputNotes extends React.Component {
     var outputArray = this.props.elements.map(function(element,index){
       switch(element.type){
         case ElementTypes.NOTE:
-        console.log(TrikiNumbers);
+        //console.log(TrikiNumbers);
           return TrikiNumbers.getNote(element.data.number,element.data.direction);
         case ElementTypes.LINEBREAK:
           return "#";

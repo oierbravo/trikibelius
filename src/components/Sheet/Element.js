@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { ElementTypes } from '../../actions'
+import { ElementTypes,EditModes } from '../../actions'
 import Note from './Note'
+import NoteGroup from './NoteGroup'
 import Silence from './Silence'
 import LineBreak from './LineBreak'
 import './Element.css'
@@ -10,6 +11,10 @@ class Element extends React.Component {
     // …
     renderElement() {
         switch (this.props.type) {
+           case ElementTypes.NOTE_GROUP:
+              return (
+                <NoteGroup data={this.props.data} onNoteClick={ this.props.clickElement}/>
+              )
             case ElementTypes.NOTE:
               return (
                 <Note data={this.props.data} onClick={ this.props.clickElement}/>

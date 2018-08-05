@@ -12,35 +12,57 @@ import styles from './ButtonStyle'
 import KeyboardTab from '@material-ui/icons/KeyboardTab';
 import KeyboardReturn from '@material-ui/icons/KeyboardReturn';
 
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+
 import { DeleteIcon,SyncIcon} from 'mdi-react';
 
 const BasicButtons = ({classes,state, addLineBreak,deleteElement,addSilence,toggleAlternative,currentSelected }) => (
   <div className='toolbar-group'>{console.log(classes)}
-  <Tooltip title="Space">
-                   <Button className={classes.button} variant="contained" onClick={() => addSilence()}><KeyboardTab></KeyboardTab></Button>
-              </Tooltip>
+  <ListItem>
+        
+      <ListItemText primary="Add" />
+    </ListItem>
+  <ListItem button onClick={() => addSilence()}>
+      <ListItemIcon>
+        <KeyboardTab />
+      </ListItemIcon>
+      <ListItemText primary="Space" />
+    </ListItem>
     <KeyboardEventHandler
       handleKeys={['space']}
       onKeyEvent={(key, e) =>  addSilence()} />
-    <Tooltip title="Linebreak">
-      <Button className={classes.button} variant="contained" onClick={() => addLineBreak()}><KeyboardReturn></KeyboardReturn></Button>
-      </Tooltip>
+   
+      <ListItem button onClick={() => addLineBreak()}>
+      <ListItemIcon>
+        <KeyboardReturn />
+      </ListItemIcon>
+      <ListItemText primary="Linebreak" />
+    </ListItem>
     <KeyboardEventHandler
       handleKeys={['enter']}
       handleEventType="keydown"
       onKeyEvent={(key, e) => addLineBreak()} />
-   <Tooltip title="Delete">
-    <Button className={classes.button} variant="contained" onClick={() => deleteElement()}><DeleteIcon></DeleteIcon></Button>
-    </Tooltip>
+
+      <ListItem button onClick={() => deleteElement()}>
+      <ListItemIcon>
+        <DeleteIcon />
+      </ListItemIcon>
+      <ListItemText primary="Delete" />
+    </ListItem>
+  
     <KeyboardEventHandler
       handleKeys={['backspace','del']}
       onKeyEvent={(key, e) =>  deleteElement()} />
 
-    <Tooltip title="Change alternative">
-    <Button className={classes.button}  variant="contained" onClick={() => toggleAlternative(TrikiNumbers.getAlternative(state.elements.present.find(((element) => (element.selected) ? element : null))))}>
-      <SyncIcon/>
-      </Button>
-      </Tooltip>
+ <ListItem button onClick={() => toggleAlternative(TrikiNumbers.getAlternative(state.elements.present.find(((element) => (element.selected) ? element : null))))}>
+      <ListItemIcon>
+        <SyncIcon />
+      </ListItemIcon>
+      <ListItemText primary="Change alternative" />
+    </ListItem>
+ 
   </div>
 )
 BasicButtons.propTypes = {

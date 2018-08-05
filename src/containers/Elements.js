@@ -1,13 +1,13 @@
 import { connect } from 'react-redux'
 import ElementList from '../components/Sheet/ElementList'
-import { selectElement } from '../actions';
-
+import { clickElement } from '../actions';
 const mapStateToProps = state => ({
-  elements: state.elements.present
+  elements: state.elements.present,
+  currentMode:state.mode
 })
 
 const mapDispatchToProps = dispatch => ({
-  clickElement: index => dispatch(selectElement(index))
+  clickElement: (index,currentMode) => dispatch(clickElement(index,currentMode))
 })
 export default connect(
   mapStateToProps,

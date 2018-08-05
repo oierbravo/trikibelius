@@ -23,3 +23,7 @@ justify-content:center;
 .triki-nota {
 text-align: center;
 }
+
+.u-flex { 
+  display:flex;
+}
