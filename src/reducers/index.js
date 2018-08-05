@@ -3,12 +3,12 @@ import elements from './elements'
 import direction from './direction'
 import mode from './mode'
 // redux-undo higher-order reducer
-import undoable from 'redux-undo';
+import undoable, { distinctState } from 'redux-undo'
 
   const trikibelius = combineReducers({
     elements: undoable(elements),
-    direction,
-    mode
+    direction: direction,
+    mode: mode
   })
   
   export default trikibelius

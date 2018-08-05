@@ -33,8 +33,15 @@ class ToolBar extends React.Component {
     render() {
       const { classes, handleDrawerOpen,open} = this.props;
       return (
-        <Toolbar variant="dense"  disableGutters={!open}>
-        
+        <Toolbar variant="dense" >
+        <IconButton
+              color="inherit"
+              aria-label="Open drawer"
+              onClick={handleDrawerOpen}
+              className={classNames(classes.menuButton,open && classes.hide)}
+            >
+              <MenuIcon />
+            </IconButton> 
         <Direction/>
         <Mode/>
         <UndoRedo/>
@@ -49,11 +56,4 @@ class ToolBar extends React.Component {
   };
   export default withStyles(styles, { withTheme: true })(ToolBar);
 
-  /**<IconButton
-              color="inherit"
-              aria-label="Open drawer"
-              onClick={handleDrawerOpen}
-              className={classNames(classes.menuButton,open && classes.hide)}
-            >
-              <MenuIcon />
-            </IconButton> */
+  /***/

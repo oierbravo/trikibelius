@@ -103,10 +103,10 @@ class UI extends React.Component {
     return (
       <div>
         <AppBar
-        position="absolute"
+        position="fixed"
         className={classNames(classes.appBar, this.state.open && classes.appBarShift)}>
-        <ToolBar disableGutters={!this.state.open} handleDrawerOpen={this.handleDrawerOpen}  open={this.state.open}/>
-        
+        <ToolBar handleDrawerOpen={this.handleDrawerOpen}  open={this.state.open}/>
+        <SideBar handleDrawerOpen={this.handleDrawerOpen} handleDrawerClose={this.handleDrawerClose} open={this.state.open}/>
         </AppBar>
         
         </div>

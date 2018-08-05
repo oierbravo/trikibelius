@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import SideBarPalette from './SideBarPalette';
+import FileButtons from './FileButtons';
 import { withStyles } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
+import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
@@ -59,11 +59,13 @@ class SideBar extends React.Component {
 
   
   render() {
-    const { classes, theme,open, handleDrawerClose} = this.props;
-    console.log(this.props);
+    const { classes, theme,open, handleDrawerOpen,handleDrawerClose} = this.props;
     return (
-        <Drawer
-          variant="permanent"
+        <SwipeableDrawer
+          open={open}
+          onOpen={handleDrawerOpen}
+          onClose={handleDrawerClose}
+          onKeyDown={handleDrawerClose}
           classes={{
             paper: classNames(classes.drawerPaper, !open && classes.drawerPaperClose),
           }}
@@ -75,9 +77,9 @@ class SideBar extends React.Component {
             </IconButton>
           </div>
           <Divider />
-          <SideBarPalette/>
+          <FileButtons/>
           <Divider />
-        </Drawer>
+        </SwipeableDrawer>
     );
   }
 }
@@ -85,8 +87,23 @@ class SideBar extends React.Component {
 SideBar.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired,
-  
-  handleDrawerClose: PropTypes.func.isRequired,
+  handleDrawerOpen: PropTypes.func.isRequired, 
+  handleDrawerClose: PropTypes.func.isRequired
 };
 
 export default withStyles(styles, { withTheme: true })(SideBar);
+/*
+<SwipeableDrawer
+          open={this.state.left}
+          onClose={this.toggleDrawer('left', false)}
+          onOpen={this.toggleDrawer('left', true)}
+        >
+          <div
+            tabIndex={0}
+            role="button"
+            onClick={this.toggleDrawer('left', false)}
+            onKeyDown={this.toggleDrawer('left', false)}
+          >
+            {sideList}
+          </div>
+        </SwipeableDrawer>*/
