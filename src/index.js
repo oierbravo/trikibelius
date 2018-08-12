@@ -14,10 +14,10 @@ import registerServiceWorker from './registerServiceWorker';
 import trikibelius from './reducers';
 const PersistentEnhancer = compose(
   /* [middlewares] */
-  persistState(/*paths, config*/)
+  persistState('elements')
 )
 
-const store = createStore(trikibelius,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+const store = createStore(trikibelius,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),PersistentEnhancer)
 
 render(
     <Provider store={store}>

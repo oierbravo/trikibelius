@@ -25,9 +25,7 @@ class OutputNotes extends React.Component {
   }
   render () {
 
-    return (
-      <textarea disabled value={this.generateOutput()}/>
-    );
+    return this.generateOutput()
   }
 }
 

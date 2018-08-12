@@ -1,4 +1,6 @@
 # ToDo
     - Ajustar componentes con el nuevo modelo de datos.
-    - Panel sidebar de inspector de elemento y acciones. Mover, borrar, cambiar...
-    - Toolbar/sidebar con elementos para insertar
+    - funcs save, load..
+        - Dialogos load, export,delete...
+# Ideas
+    - Guardar solo el index del cursor y cambiarlo a vertical.

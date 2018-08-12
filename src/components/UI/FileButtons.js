@@ -1,28 +1,49 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Button from '@material-ui/core/Button';
-import Tooltip from '@material-ui/core/Tooltip';
+
+import OutputModalNotes from './OutputModalNotes';
+
+import OutputModalNumbers from './OutputModalNumbers';
+
 import KeyboardEventHandler from 'react-keyboard-event-handler';
-import './DirectionButtons.css'
-import {TrikiNumbers} from '../../maps/Triki'
 
 import { withStyles} from '@material-ui/core/styles';
 import styles from './ButtonStyle'
 
-import KeyboardTab from '@material-ui/icons/KeyboardTab';
-import KeyboardReturn from '@material-ui/icons/KeyboardReturn';
+
 
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 
-import { DeleteIcon,SyncIcon} from 'mdi-react';
+import { ContentSaveIcon,ContentSaveOutlineIcon,FolderOpenIcon,FolderUploadIcon,DeleteForeverIcon} from 'mdi-react';
 
-const FileButtons = ({classes,state, saveStorage,loadStorage,importNumbers,exportNumbers,exportNotes,clearSheet }) => (
-  <div className=''>{console.log(classes)}
+
+export default class FileButtons extends React.Component {
+  state = {
+    openNumbersModal: false,
+    openNotesModal:false
+  };
+  exportNumbers = () => {
+    this.setState({ openNumbersModal: true });
+  };
+  exportNotes = () => {
+    this.setState({ openNotesModal: true });
+  };
+  handleModalCloseNumbers = () => {
+    console.log('clos-nums');
+    this.setState({ openNumbersModal: false });
+  }
+  handleModalCloseNotes = () => {
+    console.log('clos-notes');
+    this.setState({ openNotesModal: false });
+  }
+  render(classes, saveStorage,loadStorage,importNumbers,clearSheet) {
+    return (
+      <div className=''>{console.log(this.props.elements)}
     <ListItem button disabled onClick={() => saveStorage()}>
       <ListItemIcon>
-        <KeyboardTab />
+        <ContentSaveIcon />
      </ListItemIcon>
      <ListItemText primary="Save" />
     </ListItem>
@@ -30,7 +51,7 @@ const FileButtons = ({classes,state, saveStorage,loadStorage,importNumbers,expor
 
      <ListItem button disabled onClick={() => loadStorage()}>
       <ListItemIcon>
-        <KeyboardReturn />
+        <FolderOpenIcon />
       </ListItemIcon>
       <ListItemText primary="Load" />
     </ListItem>
@@ -38,40 +59,47 @@ const FileButtons = ({classes,state, saveStorage,loadStorage,importNumbers,expor
 
     <ListItem button disabled onClick={() => importNumbers()}>
       <ListItemIcon>
-        <KeyboardReturn />
+        <FolderUploadIcon />
       </ListItemIcon>
       <ListItemText primary="Import" />
     </ListItem>
-    <KeyboardEventHandler handleKeys={['ctrol+i']} handleEventType="keydown" onKeyEvent={(key, e) => loadStorage()} />
+    <KeyboardEventHandler handleKeys={['ctrol+i']} handleEventType="keydown" onKeyEvent={(key, e) => importNumbers()} />
 
-    <ListItem button disabled onClick={() => exportNumbers()}>
+    <ListItem button onClick={() => this.exportNumbers()}>
     <ListItemIcon>
-    <DeleteIcon />
+    <ContentSaveOutlineIcon />
     </ListItemIcon>
     <ListItemText primary="Export Numbers" />
     </ListItem>
 
-    <KeyboardEventHandler handleKeys={['ctrl+shift+s']} onKeyEvent={(key, e) =>  exportNumbers()} />
+    <KeyboardEventHandler handleKeys={['ctrl+shift+s']} onKeyEvent={(key, e) =>  this.exportNumbers()} />
 
-    <ListItem button disabled onClick={() => exportNotes()}>
+    <ListItem button disabled onClick={() => this.exportNotes()}>
     <ListItemIcon>
-    <SyncIcon />
+    <ContentSaveOutlineIcon />
     </ListItemIcon>
     <ListItemText primary="Export Notes" />
     </ListItem>
-    <KeyboardEventHandler handleKeys={['ctrl+shift+a']}  onKeyEvent={(key, e) =>  exportNotes()} />
+    <KeyboardEventHandler handleKeys={['ctrl+shift+a']}  onKeyEvent={(key, e) =>  this.exportNotes()} />
 
 
     <ListItem button disabled onClick={() => clearSheet()}>
     <ListItemIcon>
-    <SyncIcon />
+    <DeleteForeverIcon />
     </ListItemIcon>
     <ListItemText primary="Clear sheet" />
     </ListItem>
     <KeyboardEventHandler handleKeys={['ctrl+shift+n']} onKeyEvent={(key, e) =>  clearSheet()} />
-  </div>
-)
-FileButtons.propTypes = {
-  classes: PropTypes.object.isRequired
+
+    <OutputModalNumbers elements={this.props.elements} open={this.state.openNumbersModal} handleModalCloseNumbers={this.handleModalCloseNumbers}/>
+    <OutputModalNotes elements={this.props.elements} open={this.state.openNotesModal} handleModalCloseNotes={this.handleModalCloseNotes}/>
+    </div>
+     );
+  }
 }
-export default withStyles(styles)(FileButtons)
+
+
+FileButtons.propTypes = {
+  elements: PropTypes.array.isRequired
+}
+//export default withStyles(styles)(FileButtons)

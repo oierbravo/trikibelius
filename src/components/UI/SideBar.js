@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import FileButtons from './FileButtons';
+import FileActions from '../../containers/FileActions';
 import { withStyles } from '@material-ui/core/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import List from '@material-ui/core/List';
@@ -77,7 +77,7 @@ class SideBar extends React.Component {
             </IconButton>
           </div>
           <Divider />
-          <FileButtons/>
+          <FileActions/>
           <Divider />
         </SwipeableDrawer>
     );

@@ -45,6 +45,18 @@ const ModeButtons = ({classes,setEditMode,changeMode,mode }) => (
                   <MusicNoteIcon />
                 </ToggleButton>
             </ToggleButtonGroup>
+
+    </div>
+)
+ModeButtons.propTypes = {
+    classes: PropTypes.object.isRequired,
+    mode: PropTypes.string,
+    changeMode: PropTypes.func.isRequired
+}
+
+export default  withStyles(styles)(ModeButtons)
+
+/*
        
         <KeyboardEventHandler
     handleKeys={['all']}
@@ -60,12 +72,5 @@ const ModeButtons = ({classes,setEditMode,changeMode,mode }) => (
     
      (e.key === "Control" && !e.repeat) ? changeMode(EditModes.SELECT):false
      } />
-    </div>
-)
-ModeButtons.propTypes = {
-    classes: PropTypes.object.isRequired,
-    mode: PropTypes.string,
-    changeMode: PropTypes.func.isRequired
-}
 
-export default  withStyles(styles)(ModeButtons)
+*/

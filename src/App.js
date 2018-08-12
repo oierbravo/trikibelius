@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Sheet from './components/Sheet';
-import SideBar from './components/UI/SideBar.js'
+import SideBar from './components/UI/SideBar'
 import Pad from './containers/Pad';
 import UI from './components/UI';
 import Output from './containers/Output';
