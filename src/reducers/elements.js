@@ -5,6 +5,8 @@ import {
     DELETE_ELEMENT,
     TOGGLE_ALTERNATIVE,
     TOGGLE_DIRECTION,
+    CLEAR_ELEMENTS,
+    IMPORT_NUMBERS,
     ElementTypes,
     EditModes,
     Directions,
@@ -18,6 +20,10 @@ function SelectElement(state,action){
   return state.map((element, index) =>  (index === action.index)
     ? {...element, selected: !element.selected}
     : {...element, selected: false} )
+}
+function ImportElements(state,action){
+  
+  return  []
 }
 function DeleteElement(state,action){
   
@@ -60,6 +66,12 @@ function ToggleDirection(state,action){
   return state.map((element, index) =>  (index === action.index)
     ? {...element, data: {...element.data,direction: (element.data.direction === Directions.OPEN) ? Directions.CLOSE :Directions.OPEN}}
     : {...element} )
+}
+function ClearElements(state,action){
+  console.log('importing');
+  console.log(state);
+  console.log(action)
+  return []
 }
 function GroupLeft(state,action){
   console.log(state);
@@ -109,6 +121,12 @@ function elements(state = initialState, action) {
       case TOGGLE_DIRECTION:
         //return state;
           return ToggleDirection(state,action);
+      case IMPORT_NUMBERS:
+      //return state;
+        return ImportElements(state,action);
+      case CLEAR_ELEMENTS:
+      //return state;
+        return ClearElements(state,action);
       default:
         return state
     }

@@ -6,6 +6,8 @@ export const ADD_ELEMENT = 'ADD_ELEMENT'
 export const SELECT_ELEMENT = 'SELECT_ELEMENT'
 export const DELETE_ELEMENT = 'DELETE_ELEMENT'
 export const TOGGLE_ALTERNATIVE = 'TOGGLE_ALTERNATIVE'
+export const CLEAR_ELEMENTS = 'CLEAR_ELEMENTS'
+export const IMPORT_NUMBERS = 'IMPORT_NUMBERS'
 
 export const TOGGLE_DIRECTION = 'TOGGLE_DIRECTION'
 export const SET_DIRECTION = 'SET_DIRECTION'
@@ -45,6 +47,7 @@ export const EditModes = {
 export function clickElement(index,currentMode) {
   return { type: CLICK_ELEMENT,index,currentMode}
 }
+
 export function addElement(element) {
   return { type: ADD_ELEMENT, element }
 }
@@ -59,6 +62,12 @@ export function toggleAlternative(alternative){
 }
 export function toggleDirection(){
   return { type: TOGGLE_DIRECTION }
+}
+export function importNumbers() {
+  return { type: IMPORT_NUMBERS}
+}
+export function clearElements() {
+  return { type: CLEAR_ELEMENTS}
 }
 export function setDirection(direction){
   return { type: SET_DIRECTION,direction}

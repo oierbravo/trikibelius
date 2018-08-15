@@ -62,6 +62,7 @@ class SideBar extends React.Component {
     const { classes, theme,open, handleDrawerOpen,handleDrawerClose} = this.props;
     return (
         <SwipeableDrawer
+           variant='temporary'
           open={open}
           onOpen={handleDrawerOpen}
           onClose={handleDrawerClose}

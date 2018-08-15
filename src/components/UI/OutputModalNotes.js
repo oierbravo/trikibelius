@@ -25,11 +25,8 @@ export default class OutputModalNotes extends React.Component {
          
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.handleClose} color="primary">
-              Cancel
-            </Button>
-            <Button onClick={this.handleClose} color="primary">
-              Subscribe
+            <Button onClick={this.props.handleModalCloseNotes} color="primary">
+              Ok
             </Button>
           </DialogActions>
         </Dialog>

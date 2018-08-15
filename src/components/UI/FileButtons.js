@@ -17,18 +17,24 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 
 import { ContentSaveIcon,ContentSaveOutlineIcon,FolderOpenIcon,FolderUploadIcon,DeleteForeverIcon} from 'mdi-react';
+import ImportNumbersModal from './ImportNumbersModal';
 
 
 export default class FileButtons extends React.Component {
   state = {
     openNumbersModal: false,
-    openNotesModal:false
+    openNotesModal:false,
+    openImportModal:false,
+    importNumbersData: '',
   };
   exportNumbers = () => {
     this.setState({ openNumbersModal: true });
   };
   exportNotes = () => {
     this.setState({ openNotesModal: true });
+  };
+  importNumbers = () => {
+    this.setState({ openImportModal: true });
   };
   handleModalCloseNumbers = () => {
     console.log('clos-nums');
@@ -38,9 +44,23 @@ export default class FileButtons extends React.Component {
     console.log('clos-notes');
     this.setState({ openNotesModal: false });
   }
-  render(classes, saveStorage,loadStorage,importNumbers,clearSheet) {
+  handleModalCloseImport = () => {
+    console.log('clos-import');
+    this.setState({ openImportModal: false });
+  }
+  handleImportSubmit = () => {
+    console.log('clos-import');
+    console.log(this.state.importNumbersData);
+    this.setState({ openImportModal: false });
+  }
+  handleImportChangeData = (event) => {
+    console.log('change-import')
+    this.setState({ importNumbersData: event.target.value });
+    console.log(event.target.value);
+  }
+  render(classes, saveStorage,loadStorage,importNumbers,clearElements) {
     return (
-      <div className=''>{console.log(this.props.elements)}
+      <div className=''>
     <ListItem button disabled onClick={() => saveStorage()}>
       <ListItemIcon>
         <ContentSaveIcon />
@@ -57,13 +77,13 @@ export default class FileButtons extends React.Component {
     </ListItem>
     <KeyboardEventHandler handleKeys={['ctrol+o']} handleEventType="keydown" onKeyEvent={(key, e) => loadStorage()} />
 
-    <ListItem button disabled onClick={() => importNumbers()}>
+    <ListItem button onClick={() => this.importNumbers()}>
       <ListItemIcon>
         <FolderUploadIcon />
       </ListItemIcon>
       <ListItemText primary="Import" />
     </ListItem>
-    <KeyboardEventHandler handleKeys={['ctrol+i']} handleEventType="keydown" onKeyEvent={(key, e) => importNumbers()} />
+    <KeyboardEventHandler handleKeys={['ctrol+i']} handleEventType="keydown" onKeyEvent={(key, e) => this.importNumbers()} />
 
     <ListItem button onClick={() => this.exportNumbers()}>
     <ListItemIcon>
@@ -74,7 +94,7 @@ export default class FileButtons extends React.Component {
 
     <KeyboardEventHandler handleKeys={['ctrl+shift+s']} onKeyEvent={(key, e) =>  this.exportNumbers()} />
 
-    <ListItem button disabled onClick={() => this.exportNotes()}>
+    <ListItem button onClick={() => this.exportNotes()}>
     <ListItemIcon>
     <ContentSaveOutlineIcon />
     </ListItemIcon>
@@ -83,16 +103,17 @@ export default class FileButtons extends React.Component {
     <KeyboardEventHandler handleKeys={['ctrl+shift+a']}  onKeyEvent={(key, e) =>  this.exportNotes()} />
 
 
-    <ListItem button disabled onClick={() => clearSheet()}>
+    <ListItem button onClick={() => this.props.clearElements()}>
     <ListItemIcon>
     <DeleteForeverIcon />
     </ListItemIcon>
     <ListItemText primary="Clear sheet" />
     </ListItem>
-    <KeyboardEventHandler handleKeys={['ctrl+shift+n']} onKeyEvent={(key, e) =>  clearSheet()} />
+    <KeyboardEventHandler handleKeys={['ctrl+shift+n']} onKeyEvent={(key, e) =>  this.props.clearElements()} />
 
     <OutputModalNumbers elements={this.props.elements} open={this.state.openNumbersModal} handleModalCloseNumbers={this.handleModalCloseNumbers}/>
     <OutputModalNotes elements={this.props.elements} open={this.state.openNotesModal} handleModalCloseNotes={this.handleModalCloseNotes}/>
+    <ImportNumbersModal  open={this.state.openImportModal} handleModalCloseImport={this.handleModalCloseImport} handleImportChangeData={this.handleImportChangeData} handleSubmit={ this.handleImportSubmit}/>
     </div>
      );
   }
@@ -100,6 +121,8 @@ export default class FileButtons extends React.Component {
 
 
 FileButtons.propTypes = {
-  elements: PropTypes.array.isRequired
+  elements: PropTypes.array.isRequired, 
+  clearElements: PropTypes.func.isRequired,
+  importNumbers: PropTypes.func.isRequired
 }
 //export default withStyles(styles)(FileButtons)
